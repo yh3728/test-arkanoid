@@ -31,7 +31,7 @@ export class Menu {
     }
 
     keyDown(e) {
-        if (e.code === "Space") {
+        if (e.code === "Space" && this.visible) {
             this.startGame();
         }
     }

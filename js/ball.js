@@ -1,4 +1,4 @@
-import {BALL_RADIUS, BALL_SPEED, WALL_LEFT, WALL_RIGHT, WALL_TOP} from "./consts.js";
+import {BALL_RADIUS, BALL_SPEED} from "./consts.js";
 
 export class Ball {
     constructor(x, y) {

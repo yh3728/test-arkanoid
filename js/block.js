@@ -1,4 +1,4 @@
-import {BLOCK_HEIGHT, BLOCK_WIDTH} from "./consts.js";
+import {BLOCK_HEIGHT, BLOCK_WIDTH, blockSprite} from "./consts.js";
 
 export class Block {
     constructor(x, y, spriteX, spriteY, spriteWidth, spriteHeight) {
@@ -10,8 +10,7 @@ export class Block {
         this.spriteHeight = spriteHeight;
         this.width = BLOCK_WIDTH;
         this.height = BLOCK_HEIGHT;
-        this.blockSprite = new Image();
-        this.blockSprite.src = "./assets/blocks.png";
+        this.blockSprite = blockSprite;
         this.isActive = true;
     }
 

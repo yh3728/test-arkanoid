@@ -1,4 +1,4 @@
-import {PLAYER_HEIGHT, PLAYER_SPEED, PLAYER_WIDTH, WALL_LEFT, WALL_RIGHT} from "./consts.js";
+import {PLAYER_HEIGHT, PLAYER_SPEED, PLAYER_WIDTH, playerSprite, WALL_LEFT, WALL_RIGHT} from "./consts.js";
 
 export class Player{
     speed;
@@ -8,8 +8,7 @@ export class Player{
         this.y = y
         this.width = PLAYER_WIDTH;
         this.height = PLAYER_HEIGHT;
-        this.sprite = new Image();
-        this.sprite.src = "./assets/platform.png";
+        this.sprite = playerSprite;
     }
 
     init(){

@@ -8,7 +8,8 @@ import {
     BLOCK_COLS_COUNT,
     BLOCK_MARGIN,
     BLOCK_WIDTH,
-    BLOCK_HEIGHT, PLAYER_WIDTH, WALL_LEFT, WALL_RIGHT, WALL_TOP, hitBlockSound, hitPlatformSound, deathSound, winSound
+    BLOCK_HEIGHT, PLAYER_WIDTH, WALL_LEFT, WALL_RIGHT, WALL_TOP, hitBlockSound, hitPlatformSound, deathSound, winSound,
+    BG
 } from "./consts.js";
 import {Block} from "./block.js";
 import {Ball} from "./ball.js";
@@ -16,9 +17,8 @@ import {Menu} from "./menu.js";
 
 export class Game {
     constructor() {
-        this.bg = new Image();
+        this.bg = BG;
         this.menu = new Menu(this);
-        this.bg.src = './assets/Fields.png';
         this.ball = new Ball(GAME_WIDTH / 2, GAME_HEIGHT - GAME_HEIGHT/4);
         this.player = new Player(GAME_WIDTH / 2 - PLAYER_WIDTH / 2, GAME_HEIGHT - GAME_HEIGHT/8, this.ball);
         this.bgCut = cutTileset(2, 5, this.bg.width, this.bg.height);
@@ -32,6 +32,8 @@ export class Game {
     }
 
     startGame(){
+        this.blocks = [];
+        this.initBlocks();
         this.gameOver = false;
         this.win = false;
         this.player.init();
@@ -40,8 +42,7 @@ export class Game {
         this.gameOver = false;
         this.win = false;
         this.bgNum = Math.floor(Math.random() * 8) + 1;
-        this.blocks = [];
-        this.initBlocks();
+        
     }
 
     endGame(){
@@ -121,7 +122,7 @@ export class Game {
             this.player.update(this.inputHandler);
             this.detectBallCollision()
             this.ball.update()
-            if ((this.blocks.every(block => block === null)) && !this.menu.visible) {
+            if ((this.score == this.blocks.length * 100) && this.blocks.length != 0) {
                 this.win = true;
                 winSound.play();
                 this.endGame();
